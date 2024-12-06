@@ -18,7 +18,10 @@ connectDB(process.env.MONGO_URI)
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-app.use('/users', userRoute)
+// app.use('/users', userRoute)
+app.use('/users', (req, res) => {
+    res.json({ message: "This is the /users route" })
+})
 
 const port = process.env.PORT || 3000
 const host = process.env.HOST || 'localhost'
